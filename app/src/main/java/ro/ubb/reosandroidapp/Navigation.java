@@ -2,8 +2,6 @@ package ro.ubb.reosandroidapp;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.view.View;
@@ -25,16 +23,6 @@ public class Navigation extends AppCompatActivity
         setContentView(R.layout.activity_navigation);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        final Intent intent = new Intent(this, ContactUsActivity.class);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(intent);
-            }
-        });
-
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -100,9 +88,12 @@ public class Navigation extends AppCompatActivity
             // Handle the camera action
         } else if (id == R.id.ourlocations) {
 
-        } else if (id == R.id.testimonials) {
-
+        } else if (id == R.id.statistics) {
+            final Intent intent = new Intent(this, StatisticsActivity.class);
+            startActivity(intent);
         } else if (id == R.id.contactus) {
+            final Intent intent = new Intent(this, ContactUsActivity.class);
+            startActivity(intent);
 
         } else if (id == R.id.nav_share) {
 
@@ -113,5 +104,10 @@ public class Navigation extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void addApartment(View view) {
+        Intent i = new Intent(this, AddApartmentActivity.class);
+        startActivity(i);
     }
 }

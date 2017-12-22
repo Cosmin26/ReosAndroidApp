@@ -70,15 +70,41 @@ tools:showIn="@layout/activity_detail">
             android:textColorHint="#fff"/>
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/galleryButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/updateText"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="37dp"
             android:background="#000"
-            android:onClick="btnClick"
+            android:onClick="choosePicture"
+            android:text="choosePicture"
+            android:textColor="#fff"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/editButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/galleryButton"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="37dp"
+            android:background="#000"
+            android:onClick="editClick"
             android:text="Update"
+            android:textColor="#fff"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/deleteButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editButton"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="37dp"
+            android:background="#000"
+            android:onClick="deleteClick"
+            android:text="Delete"
             android:textColor="#fff"
             android:textSize="20sp" />
 

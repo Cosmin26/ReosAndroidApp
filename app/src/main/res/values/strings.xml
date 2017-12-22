@@ -7,4 +7,10 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="send_to">Share</string>
     <string name="title_activity_detail">DetailActivity</string>
+
+    <string-array name="cost_array">
+        <item>300</item>
+        <item>500</item>
+        <item>1000</item>
+    </string-array>
 </resources>

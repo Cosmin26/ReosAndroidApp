@@ -12,6 +12,10 @@ import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import ro.ubb.reosandroidapp.globals.Globals;
+import ro.ubb.reosandroidapp.repository.ApartmentRepository;
+import ro.ubb.reosandroidapp.repository.AppDatabase;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -19,7 +23,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
+        if(Globals.apartmentRepository == null) {
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    AppDatabase appDatabase = AppDatabase.getAppDatabase(getApplicationContext());
+                    Globals.apartmentRepository = new ApartmentRepository(appDatabase);
+                }
+            }).start();
+        }
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -53,8 +65,6 @@ public class MainActivity extends AppCompatActivity {
             toast.show();
         }
     }
-
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

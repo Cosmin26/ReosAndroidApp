@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="ro.ubb.reosandroidapp.AddApartmentActivity"
+    tools:showIn="@layout/activity_add_apartment">
+    <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="horizontal" android:layout_width="match_parent"
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:layout_margin="5dp"
+        card_view:cardCornerRadius="10dp"
+        card_view:cardElevation="5dp"
+
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="1">
+
+            <ImageView
+                android:id="@+id/apartmentImageAdd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="5dp"
+                android:layout_alignParentTop="true"
+                android:scaleType="centerCrop" />
+
+            <TextView
+                android:id="@+id/nameLabelAdd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="3dp"
+                android:textStyle="bold"
+                android:text="Name : "
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <EditText
+                android:id="@+id/updateText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/nameTxtDetail"
+                android:layout_alignRight="@+id/nameTxtDetail"
+                android:layout_below="@+id/nameTxtDetail"
+                android:layout_marginTop="47dp"
+                android:ems="10"
+                android:inputType="text"
+                android:hint="Enter new name"
+                android:textColorHint="#fff"/>
+
+            <Spinner
+                android:id="@+id/cost_spinner"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/galleryButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/updateText"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="37dp"
+                android:background="#000"
+                android:onClick="choosePicture"
+                android:text="choosePicture"
+                android:textColor="#fff"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/editButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/galleryButton"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="37dp"
+                android:background="#000"
+                android:onClick="addClick"
+                android:text="Update"
+                android:textColor="#fff"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+</RelativeLayout>

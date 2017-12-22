@@ -11,8 +11,8 @@
             android:id="@+id/ourlocations"
             android:title="Our Locations" />
         <item
-            android:id="@+id/testimonials"
-            android:title="Testimonials" />
+            android:id="@+id/statistics"
+            android:title="Statistacs" />
         <item
             android:id="@+id/contactus"
             android:title="Contact Us" />
