@@ -8,4 +8,6 @@ import ro.ubb.reosandroidapp.repository.ApartmentRepository;
 
 public class Globals {
     public static ApartmentRepository apartmentRepository = null;
+    public static boolean isAdmin = false;
+    public static String personId = "";
 }

@@ -4,7 +4,7 @@ android {
     compileSdkVersion 26
     defaultConfig {
         applicationId "ro.ubb.reosandroidapp"
-        minSdkVersion 15
+        minSdkVersion 25
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
@@ -31,4 +31,9 @@ dependencies {
     compile 'android.arch.persistence.room:runtime:1.0.0'
     annotationProcessor 'android.arch.persistence.room:compiler:1.0.0'
     compile 'com.github.PhilJay:MPAndroidChart:v3.0.3'
+    compile 'com.google.firebase:firebase-core:11.8.0'
+    compile "com.google.firebase:firebase-auth:11.8.0"
+    compile 'com.google.firebase:firebase-database:11.8.0'
+    compile 'com.google.firebase:firebase-messaging:11.8.0'
 }
+apply plugin: 'com.google.gms.google-services'

@@ -7,16 +7,18 @@ import android.arch.persistence.room.PrimaryKey;
 /**
  * Created by CristianCosmin on 08.11.2017.
  */
-@Entity(tableName = "apartment")
+//@Entity(tableName = "apartment")
 public class Apartment {
-    @PrimaryKey(autoGenerate = true)
-    private Long id;
+    //    @PrimaryKey(autoGenerate = true)
+    private String userId;
+    private String id;
     private String title;
-    @ColumnInfo(typeAffinity = ColumnInfo.BLOB)
-    private byte[] image;
+//    @ColumnInfo(typeAffinity = ColumnInfo.BLOB)
+    private String image;
     private int cost;
 
-    public Apartment(String title, byte[] image, int cost) {
+    public Apartment(String userId, String title, String image, int cost) {
+        this.userId = userId;
         this.title = title;
         this.image = image;
         this.cost = cost;
@@ -25,11 +27,19 @@ public class Apartment {
     public Apartment() {
     }
 
-    public Long getId() {
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -41,11 +51,11 @@ public class Apartment {
         this.title = title;
     }
 
-    public byte[] getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(byte[] image) {
+    public void setImage(String image) {
         this.image = image;
     }
 

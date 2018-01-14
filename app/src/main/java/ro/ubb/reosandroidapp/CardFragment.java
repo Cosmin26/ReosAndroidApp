@@ -13,7 +13,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.List;
+
 import ro.ubb.reosandroidapp.globals.Globals;
+import ro.ubb.reosandroidapp.model.Apartment;
+import ro.ubb.reosandroidapp.repository.ApartmentRepository;
 import ro.ubb.reosandroidapp.view.ApartmentAdapter;
 
 
@@ -46,6 +50,7 @@ public class CardFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager MyLayoutManager = new LinearLayoutManager(getActivity());
         MyLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+
         if (recyclerView != null) {
             recyclerView.setAdapter(new ApartmentAdapter(Globals.apartmentRepository.getAll(), this.getContext()));
         }

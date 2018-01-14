@@ -21,9 +21,11 @@ import java.io.IOException;
 import ro.ubb.reosandroidapp.globals.Globals;
 import ro.ubb.reosandroidapp.model.Apartment;
 import ro.ubb.reosandroidapp.repository.ApartmentRepository;
+import ro.ubb.reosandroidapp.service.ObserverService;
 
 public class AddApartmentActivity extends AppCompatActivity {
 
+//    private ObserverService.Obser remoteService;
     private int PICK_IMAGE_REQUEST = 1;
     private ApartmentRepository apartmentRepository;
     public ImageView imageView;
@@ -35,10 +37,10 @@ public class AddApartmentActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_apartment);
         Toolbar toolbar = findViewById(R.id.toolbar);
 //        setSupportActionBar(toolbar);
-        FloatingActionButton fab = findViewById(R.id.fab);
+//        FloatingActionButton fab = findViewById(R.id.fab);
         this.apartmentRepository = Globals.apartmentRepository;
 
-        imageView = findViewById(R.id.apartmentImageAdd);
+        imageView = findViewById(R.id.addApartment);
 
         spinner = (Spinner) findViewById(R.id.cost_spinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
@@ -51,42 +53,56 @@ public class AddApartmentActivity extends AppCompatActivity {
     }
 
     public void addClick(View view) {
-        EditText updateNameTextField = findViewById(R.id.updateText);
+        EditText updateNameTextField = findViewById(R.id.addText);
         int cost = Integer.parseInt((String) spinner.getSelectedItem());
-        Bitmap image = ((BitmapDrawable) this.imageView.getDrawable()).getBitmap();
-        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        image.compress(Bitmap.CompressFormat.PNG, 100, stream);
-        byte[] imageArray = stream.toByteArray();
-        Apartment apartment = new Apartment(updateNameTextField.getText().toString(), imageArray
-                , cost);
-        Globals.apartmentRepository.add(apartment);
-    }
-
-    public void choosePicture(View view) {
-        Intent intent = new Intent();
-        // Show only images, no videos or anything else
-        intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        // Always show the chooser (if there are multiple options available)
-        startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
+        EditText updateImageTextField = findViewById(R.id.addImage);
+//        Bitmap image = ((BitmapDrawable) this.imageView.getDrawable()).getBitmap();
+//        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+//        image.compress(Bitmap.CompressFormat.PNG, 100, stream);
+//        byte[] imageArray = stream.toByteArray();
+//        Apartment apartment = new Apartment(updateNameTextField.getText().toString(), imageArray
+//                , cost);
+        Globals.apartmentRepository.addApartment(Globals.personId, updateNameTextField.getText().toString(), updateImageTextField.getText().toString(),cost);
+        ObserverService.notifyAllObservers();
+        Intent intent = new Intent(this, Navigation.class);
+        startActivity(intent);
+        finish();
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
-
-            Uri uri = data.getData();
-
-            try {
-                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
-                // Log.d(TAG, String.valueOf(bitmap));
-
-                this.imageView.setImageBitmap(bitmap);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
+    public void finish() {
+        Intent returnIntent = new Intent();
+//        returnIntent.putExtra("passed_item", Globals.apartmentRepository.getAll());
+        // setResult(RESULT_OK);
+        setResult(RESULT_OK, returnIntent); //By not passing the intent in the result, the calling activity will get null data.
+        super.finish();
     }
+
+//    public void choosePicture(View view) {
+//        Intent intent = new Intent();
+//        // Show only images, no videos or anything else
+//        intent.setType("image/*");
+//        intent.setAction(Intent.ACTION_GET_CONTENT);
+//        // Always show the chooser (if there are multiple options available)
+//        startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
+//    }
+//
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//
+//        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
+//
+//            Uri uri = data.getData();
+//
+//            try {
+//                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
+//                // Log.d(TAG, String.valueOf(bitmap));
+//
+//                this.imageView.setImageBitmap(bitmap);
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//    }
 }

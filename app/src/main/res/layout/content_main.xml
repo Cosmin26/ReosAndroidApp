@@ -53,7 +53,6 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="37dp"
         android:background="#000"
-        android:onClick="btnClick"
         android:text="Continue"
         android:textColor="#fff"
         android:textSize="20sp" />

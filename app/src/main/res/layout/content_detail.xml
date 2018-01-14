@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
 xmlns:app="http://schemas.android.com/apk/res-auto"
 xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
@@ -10,7 +10,8 @@ android:paddingRight="@dimen/activity_horizontal_margin"
 android:paddingTop="@dimen/activity_vertical_margin"
 app:layout_behavior="@string/appbar_scrolling_view_behavior"
 tools:context="ro.ubb.reosandroidapp.DetailActivity"
-tools:showIn="@layout/activity_detail">
+tools:showIn="@layout/activity_detail"
+    android:orientation="vertical">
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal" android:layout_width="match_parent"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
@@ -40,7 +41,7 @@ tools:showIn="@layout/activity_detail">
             android:layout_height="wrap_content"
             android:padding="3dp"
             android:textStyle="bold"
-            android:text="Name : "
+            android:text="Title : "
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
@@ -50,7 +51,7 @@ tools:showIn="@layout/activity_detail">
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="5dp"
-            android:text="Name"
+            android:text="Title"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@color/colorAccent"
             android:layout_alignParentLeft="true"
@@ -69,26 +70,59 @@ tools:showIn="@layout/activity_detail">
             android:hint="Enter new name"
             android:textColorHint="#fff"/>
 
-        <Button
-            android:id="@+id/galleryButton"
+        <TextView
+            android:id="@+id/imageLabelDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="3dp"
+            android:textStyle="bold"
+            android:text="Image : "
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:id="@+id/imageTxtDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:text="Image"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/colorAccent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <EditText
+            android:id="@+id/updateImage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/updateText"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="37dp"
-            android:background="#000"
-            android:onClick="choosePicture"
-            android:text="choosePicture"
-            android:textColor="#fff"
-            android:textSize="20sp" />
+            android:layout_alignEnd="@+id/imageTxtDetail"
+            android:layout_alignRight="@+id/imageTxtDetail"
+            android:layout_below="@+id/imageTxtDetail"
+            android:ems="10"
+            android:inputType="text"
+            android:hint="Enter new imageUrl"
+            android:textColorHint="#fff"/>
+
+        <!--<Button-->
+            <!--android:id="@+id/galleryButton"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_below="@+id/updateText"-->
+            <!--android:layout_centerHorizontal="true"-->
+            <!--android:layout_marginTop="37dp"-->
+            <!--android:background="#000"-->
+            <!--android:onClick="choosePicture"-->
+            <!--android:text="choosePicture"-->
+            <!--android:textColor="#fff"-->
+            <!--android:textSize="20sp" />-->
 
         <Button
             android:id="@+id/editButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/galleryButton"
+            android:layout_below="@+id/updateImage"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="37dp"
             android:background="#000"
             android:onClick="editClick"
             android:text="Update"
@@ -101,7 +135,6 @@ tools:showIn="@layout/activity_detail">
             android:layout_height="wrap_content"
             android:layout_below="@+id/editButton"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="37dp"
             android:background="#000"
             android:onClick="deleteClick"
             android:text="Delete"
@@ -111,4 +144,4 @@ tools:showIn="@layout/activity_detail">
     </LinearLayout>
 </android.support.v7.widget.CardView>
 
-</RelativeLayout>
+</ScrollView>
